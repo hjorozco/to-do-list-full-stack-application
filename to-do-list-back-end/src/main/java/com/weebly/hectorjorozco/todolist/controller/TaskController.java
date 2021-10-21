@@ -30,36 +30,24 @@ public class TaskController {
 
 	// Add task (CREATE)
 	@PostMapping("/addtask")
-	public Task newTask(@RequestBody Task task) {
+	public Task addTask(@RequestBody Task task) {
 		return taskRepository.save(task);
 	}
 
 	// Get all tasks (READ)
-	@GetMapping("/alltasks")
-	public List<Task> getAllTasks() {
+	@GetMapping("/tasks")
+	public List<Task> getTasks() {
 		return taskRepository.findAll();
 	}
 
-	// Get task by id (READ)
+	// Get task (READ)
 	@GetMapping("/task/{id}")
-	public ResponseEntity<Task> getTaskById(@PathVariable long id) {
+	public ResponseEntity<Task> getTask(@PathVariable long id) {
 		Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
 		return ResponseEntity.ok(task);
 	}
 
-//	@GetMapping("/students/{name}")
-//	public List<Task> getStudentByName(@PathVariable String name) {
-//		// return studentRepo.findByName(name);
-//
-//		List<Task> students = taskRepository.findByName(name);
-//		if (students.isEmpty()) {
-//			System.out.println(new ResourceNotFoundException("Student(s) with the name " + name + " not found"));
-//		}
-//
-//		return taskRepository.findByName(name);
-//	}
-
-	// Update task by id (UPDATE)
+	// Update task (UPDATE)
 	@PutMapping("/task/{id}")
 	public ResponseEntity<Task> updateTask(@PathVariable long id, @RequestBody Task task) {
 		Task tempTask = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
@@ -69,7 +57,7 @@ public class TaskController {
 		return ResponseEntity.ok(updatedTask);
 	}
 
-	// Delete task by id (DELETE)
+	// Delete task (DELETE)
 	@DeleteMapping("/task/{id}")
 	public String deleteTask(@PathVariable long id) {
 		taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));

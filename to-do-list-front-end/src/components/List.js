@@ -41,8 +41,8 @@ const List = props => {
                                     {/* If the task is completed, display with a line going through*/}
                                     {
                                         task.completed ?
-                                            <div className="LineThrough">{task.task}</div> :
-                                            task.task
+                                            <div className="LineThrough">{task.description}</div> :
+                                            task.description
                                     }
                                 </li>
                                 <div className="TaskButtonsContainer">

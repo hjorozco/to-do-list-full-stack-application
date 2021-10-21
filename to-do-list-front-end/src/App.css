@@ -1,6 +1,15 @@
-.App {
-  /* Green 200 */
-  background-color: #A5D6A7;
+.App{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Tasks {
+  /* Green 300 */
+  background-color: #81C784;
   width: 80vw;
   height: 80vh;
   margin-top: 40px;
@@ -10,7 +19,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.AppTitleContainer{
+.TasksTitleContainer {
   width: 100%;
   margin: 20px;
   display: flex;
@@ -51,7 +60,7 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  position:absolute;
+  position: absolute;
   right: 0;
   top: 0;
   margin-right: 40px;
@@ -101,7 +110,7 @@ li {
   border-bottom: 1px solid #A5D6A7;
 }
 
-.TaskContainer:hover{
+.TaskContainer:hover {
   /* Green 900 */
   border-bottom: 1px solid #1B5E20;
 }
@@ -203,20 +212,24 @@ li {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.Footer{
+  margin-bottom: 10px;
+}
+
 @media (max-width:800px) {
-  .App {
+  .Tasks {
     width: 90vw;
   }
 }
 
 @media (min-width:1200px) {
-  .App {
+  .Tasks {
     width: 70vw;
   }
 }
 
 @media (min-width:1600px) {
-  .App {
+  .Tasks {
     width: 60vw;
   }
 }

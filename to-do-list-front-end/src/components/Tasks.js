@@ -1,25 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import ListContainer from './ListContainer';
-import Form from './Form'
-import './App.css';
+import TaskHttpServices from '../services/TaskHttpServices';
 import addTaskIcon from '../images/addTask.svg';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const App = () => {
+const Tasks = () => {
 
-  const [tasks, setTasks] = useState([{
-    task: "Test1",
-    completed: false,
-    id: 1,
-  }, {
-    task: "Test2",
-    completed: true,
-    id: 2,
-  }]);
+  const [tasks, setTasks] = useState([]);
 
   // When component mounts
   useEffect(() => {
-
+    TaskHttpServices.getTasks().then(res => setTasks(res.data));
   }, []);
 
   let mount = useRef();
@@ -49,8 +40,8 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <div className="AppTitleContainer">TO DO LIST
+    <div className="Tasks">
+      <div className="TasksTitleContainer">TO DO LIST
         <Tooltip title='add' arrow>
           <img className="AddTaskImage" src={addTaskIcon} width="50px" height="50px" />
         </Tooltip>
@@ -60,12 +51,9 @@ const App = () => {
         removeTask={removeTask}
         changeCompleteStatus={changeCompleteStatus}
       />
-      {/* <Form
-        addTask={addTask}
-      /> */}
     </div>
   );
 
 }
 
-export default App;
+export default Tasks;
