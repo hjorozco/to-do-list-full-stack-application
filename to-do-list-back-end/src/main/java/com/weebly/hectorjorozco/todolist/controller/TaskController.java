@@ -18,8 +18,6 @@ import com.weebly.hectorjorozco.todolist.exception.ResourceNotFoundException;
 import com.weebly.hectorjorozco.todolist.model.Task;
 import com.weebly.hectorjorozco.todolist.repository.TaskRepository;
 
-// All CRUD operations are defined on this controller. 
-
 // Front End React application location
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -51,7 +49,8 @@ public class TaskController {
 	@PutMapping("/task/{id}")
 	public ResponseEntity<Task> updateTask(@PathVariable long id, @RequestBody Task task) {
 		Task tempTask = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
-		tempTask.setDescription(task.getDescription());
+		tempTask.setTitle(task.getTitle());
+		tempTask.setDetails(task.getDetails());
 		tempTask.setCompleted(task.getCompleted());
 		Task updatedTask = taskRepository.save(tempTask);
 		return ResponseEntity.ok(updatedTask);

@@ -8,7 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 const List = props => {
 
     const handleRemove = (taskId) => {
-        props.removeTask(taskId);
+        props.showDeleteTaskForm(taskId);
     }
 
     const handleChangeCompleteStatus = (taskId) => {
@@ -41,8 +41,8 @@ const List = props => {
                                     {/* If the task is completed, display with a line going through*/}
                                     {
                                         task.completed ?
-                                            <div className="LineThrough">{task.description}</div> :
-                                            task.description
+                                            <div className="LineThrough">{task.title}</div> :
+                                            task.title
                                     }
                                 </li>
                                 <div className="TaskButtonsContainer">

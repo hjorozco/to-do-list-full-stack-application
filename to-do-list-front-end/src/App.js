@@ -1,13 +1,9 @@
-import Tasks from './components/Tasks';
-// import AddStudent from './components/AddStudent';
-// import UpdateStudent from './components/UpdateStudent';
-// import DeleteStudent from './components/DeleteStudent';
-// import ViewStudent from './components/ViewStudent';
-import './App.css';
-
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import Header from './components/Header';
+import './App.css';
+import Tasks from './components/Tasks';
 import Footer from './components/Footer';
+import AddTask from './components/AddTask';
+import DeleteTask from './components/DeleteTask';
 
 function App() {
   return (
@@ -17,10 +13,10 @@ function App() {
         <Switch>
           <Route path="/" exact component={Tasks}></Route>
           <Route path="/tasks" component={Tasks}></Route>
-          {/* <Route path="/add-student" component={AddStudent}></Route>
-          <Route path="/update-student/:id" component={UpdateStudent}></Route>
-          <Route path="/delete-student/:id" component={DeleteStudent}></Route>
+          <Route path="/add-task" component={AddTask}></Route>
+          {/*<Route path="/update-student/:id" component={UpdateStudent}></Route>
           <Route path="/view-student/:id" component={ViewStudent}></Route> */}
+          <Route path="/delete-task/:id" component={DeleteTask}></Route>
         </Switch>
         <Footer />
       </Router>

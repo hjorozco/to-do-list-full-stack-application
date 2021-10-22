@@ -1,54 +1,44 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ListContainer from './ListContainer';
 import TaskHttpServices from '../services/TaskHttpServices';
 import addTaskIcon from '../images/addTask.svg';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const Tasks = () => {
+const Tasks = props => {
 
   const [tasks, setTasks] = useState([]);
 
-  // When component mounts
+  // When component mounts get tasks data from MySQL database
   useEffect(() => {
-    TaskHttpServices.getTasks().then(res => setTasks(res.data));
+    TaskHttpServices.getTasks().then(result => setTasks(result.data));
   }, []);
 
-  let mount = useRef();
-  useEffect(() => {
-    // When component mounts do nothing
-    if (!mount.current) {
-      mount.current = true
-      return
-    }
-    // When state changes, save it on local storage.
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  const addTask = task => {
-    setTasks(tasks => [...tasks, task]);
+  const showAddTaskForm = () => {
+    props.history.push("/add-task");
   }
 
-  const removeTask = taskId => {
-    setTasks(tasks => tasks.filter(task => task.id !== taskId));
+  const showDeleteTaskForm = id => {
+    props.history.push(`/delete-task/${id}`);
   }
 
-  const changeCompleteStatus = taskId => {
+  const changeCompleteStatus = id => {
     let tempTasks = tasks.slice();
-    let taskIndex = tempTasks.findIndex(task => task.id === taskId);
+    let taskIndex = tempTasks.findIndex(task => task.id === id);
     tempTasks[taskIndex].completed = !tempTasks[taskIndex].completed;
     setTasks(tempTasks);
   }
 
   return (
-    <div className="Tasks">
-      <div className="TasksTitleContainer">TO DO LIST
+    <div className="Screen Tasks">
+      <div className="TitleContainer">TO DO LIST
         <Tooltip title='add' arrow>
-          <img className="AddTaskImage" src={addTaskIcon} width="50px" height="50px" />
+          <img className="AddTaskImage" src={addTaskIcon} width="50px" height="50px"
+            onClick={showAddTaskForm} alt="Add Task"/>
         </Tooltip>
       </div>
       <ListContainer
         tasks={tasks}
-        removeTask={removeTask}
+        showDeleteTaskForm={showDeleteTaskForm}
         changeCompleteStatus={changeCompleteStatus}
       />
     </div>

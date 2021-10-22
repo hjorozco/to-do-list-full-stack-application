@@ -12,16 +12,18 @@ public class Task {
 	@Id
 	// @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private String description;
+	private String title;
+	private String details;
 	private byte completed;
 
 	public Task() {
 	}
 
-	public Task(long id, String description, byte completed) {
+	public Task(long id, String title, String details, byte completed) {
 		super();
 		this.id = id;
-		this.description = description;
+		this.title = title;
+		this.details = details;
 		this.completed = completed;
 	}
 
@@ -33,12 +35,20 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
 	}
 
 	public byte getCompleted() {

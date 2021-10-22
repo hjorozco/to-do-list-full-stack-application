@@ -1,4 +1,4 @@
-.App{
+.App {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -7,19 +7,27 @@
   justify-content: space-between;
 }
 
-.Tasks {
+.Screen {
   /* Green 300 */
   background-color: #81C784;
-  width: 80vw;
-  height: 80vh;
   margin-top: 40px;
-  border-radius: 10px;
   display: grid;
   grid-template: 80px 1fr / 1fr;
+  border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.TasksTitleContainer {
+.Tasks{
+  width: 80vw;
+  height: 80vh;
+}
+
+.Operation {
+  width: 40vw;
+  height: fit-content;
+}
+
+.TitleContainer {
   width: 100%;
   margin: 20px;
   display: flex;
@@ -28,10 +36,6 @@
   position: relative;
   font-size: x-large;
   font-weight: bold;
-}
-
-.ToDoImage {
-  margin-right: 20px;
 }
 
 .Container {
@@ -49,10 +53,10 @@
 }
 
 .FormContainer {
+  background-color: #FFF59D;
+  margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
-  display: grid;
-  grid-template: 65px 1fr / 1fr;
   overflow: auto;
 }
 
@@ -148,7 +152,11 @@ li {
 }
 
 .FormInput {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.TextArea {
+  resize: vertical;
 }
 
 .FormButtonsContainer {
@@ -188,7 +196,7 @@ li {
 
 .SubmitButton {
   /* Green 500 */
-  background-color: #4CAF50;
+  background-color: #66BB6A;
   font-weight: 600;
   margin-right: 10px;
 }
@@ -199,21 +207,25 @@ li {
 }
 
 .ResetButton {
-  /* Green 200 */
-  background-color: #A5D6A7;
+  /* Green 50 */
+  background-color: #E8F5E9;
 }
 
 .ResetButton:hover {
-  /* Green 500 */
-  background-color: #4CAF50;
+  /* Green 200 */
+  background-color: #A5D6A7;
 }
 
 .Button:active {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.Footer{
+.Footer {
   margin-bottom: 10px;
+}
+
+.Bold{
+  font-weight: 600;
 }
 
 @media (max-width:800px) {

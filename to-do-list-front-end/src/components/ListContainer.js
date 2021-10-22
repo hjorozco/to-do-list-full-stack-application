@@ -30,7 +30,7 @@ const ListContainer = props => {
             />
             <List
                 tasks={props.tasks}
-                removeTask={props.removeTask}
+                showDeleteTaskForm={props.showDeleteTaskForm}
                 changeCompleteStatus={props.changeCompleteStatus}
                 filter={filter}
             />
