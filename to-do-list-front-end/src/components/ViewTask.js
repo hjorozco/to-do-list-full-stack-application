@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import TaskHttpServices from '../services/TaskHttpServices';
 
-const DeleteTask = props => {
+const ViewTask = props => {
 
   const [task, setTask] = useState({
     id: 0,
@@ -17,13 +17,7 @@ const DeleteTask = props => {
     })
   }, [props.match.params.id]);
 
-  const handleDeleteTask = e => {
-    e.preventDefault();
-    TaskHttpServices.deleteTask(task.id)
-      .then(() => props.history.push("/tasks"));
-  }
-
-  const handleCancel = e => {
+  const handleBack = e => {
     e.preventDefault();
     props.history.push("/tasks");
   }
@@ -31,10 +25,10 @@ const DeleteTask = props => {
   return (
     <div className="Screen Operation">
       <div className="TitleContainer">
-        Delete task
+        View task
       </div>
       <div className="Container FormContainer">
-        <form className="Form" onSubmit={handleDeleteTask} onReset={handleCancel}>
+        <form className="Form" onSubmit={handleBack}>
           <label htmlFor="title">Title</label>
           <input
             id="title"
@@ -50,12 +44,9 @@ const DeleteTask = props => {
             disabled={true}
             rows="3"
           />
-          <div className="Bold FormInput">
-            {task.completed ? "Done." : "Not done. Are you sure?"}
-          </div>
+          <div className="Bold FormInput">{task.completed ? "Done." : "Not done."}</div>
           <div className="FormButtonsContainer">
-            <button className="Button SubmitButton" type="submit">DELETE</button>
-            <button className="Button ResetButton" type="reset">Cancel</button>
+            <button className="Button SubmitButton" type="submit">BACK</button>
           </div>
         </form>
       </div>
@@ -64,4 +55,4 @@ const DeleteTask = props => {
 
 }
 
-export default DeleteTask;
+export default ViewTask;

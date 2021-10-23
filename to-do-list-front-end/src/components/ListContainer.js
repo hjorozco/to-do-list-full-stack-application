@@ -30,6 +30,8 @@ const ListContainer = props => {
             />
             <List
                 tasks={props.tasks}
+                showViewTaskForm={props.showViewTaskForm}
+                showEditTaskForm={props.showEditTaskForm}
                 showDeleteTaskForm={props.showDeleteTaskForm}
                 changeCompleteStatus={props.changeCompleteStatus}
                 filter={filter}

@@ -7,12 +7,20 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const List = props => {
 
-    const handleRemove = (taskId) => {
-        props.showDeleteTaskForm(taskId);
+    const handleViewTask = (id) => {
+        props.showViewTaskForm(id);
     }
 
-    const handleChangeCompleteStatus = (taskId) => {
-        props.changeCompleteStatus(taskId);
+    const handleEditTask = (id) => {
+        props.showEditTaskForm(id);
+    }
+
+    const handleDeleteTask = (id) => {
+        props.showDeleteTaskForm(id);
+    }
+
+    const handleChangeCompleteStatus = (id) => {
+        props.changeCompleteStatus(id);
     }
 
     return (
@@ -24,7 +32,7 @@ const List = props => {
                         let listItem =
                             <div className="TaskContainer" key={task.id}>
                                 <Tooltip
-                                    title={task.completed ? "set undone" : "set done"}
+                                    title={task.completed ? "set not done" : "set done"}
                                     arrow>
                                     <button
                                         className="TaskButton"
@@ -47,17 +55,17 @@ const List = props => {
                                 </li>
                                 <div className="TaskButtonsContainer">
                                     <Tooltip title='view' arrow>
-                                        <button className="TaskButton" onClick={() => handleRemove(task.id)}>
+                                        <button className="TaskButton" onClick={() => handleViewTask(task.id)}>
                                             <img width="20" height="20" alt="Delete from list" src={viewIcon} />
                                         </button>
                                     </Tooltip>
                                     <Tooltip title='edit' arrow>
-                                        <button className="TaskButton" onClick={() => handleRemove(task.id)}>
+                                        <button className="TaskButton" onClick={() => handleEditTask(task.id)}>
                                             <img width="20" height="20" alt="Delete from list" src={editIcon} />
                                         </button>
                                     </Tooltip>
                                     <Tooltip title='delete' arrow>
-                                        <button className="TaskButton" onClick={() => handleRemove(task.id)}>
+                                        <button className="TaskButton" onClick={() => handleDeleteTask(task.id)}>
                                             <img width="20" height="20" alt="Delete from list" src={deleteIcon} />
                                         </button>
                                     </Tooltip>
