@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Displays a header section for the list, containing a "filter" select to let the user filter the
+// tasks displayed on the list.
 const ListHeader = props => {
 
     const handleChange = e => {

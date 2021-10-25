@@ -6,7 +6,8 @@ const ListContainer = props => {
 
     const [filter, setFilter] = useState("not completed");
 
-    // When component mounts, read data from local storage and assign it  to state
+    // When component mounts, read the list display filter value from local storage and assign it  
+    // to "filter" state
     useEffect(() => {
         setFilter(localStorage.getItem("filter") || "not completed");
     }, []);
@@ -18,7 +19,7 @@ const ListContainer = props => {
             mount.current = true
             return
         }
-        // When state changes, save it on local storage.
+        // When "filter" state changes, save it on local storage.
         localStorage.setItem("filter", filter);
     }, [filter]);
 

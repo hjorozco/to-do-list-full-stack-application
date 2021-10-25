@@ -20,40 +20,43 @@ const App = () => {
 
   // When component mounts get tasks data from MySQL database by using a GET request to the API
   useEffect(() => {
-    TaskHttpServices.getTasks()
+    TaskHttpServices.getTasksFromDb()
       .then(result => setTasks(result.data))
       .catch((e) => alert(`Can not read TO DO LIST from database. ${e.message}.`));
   }, []);
 
-  // Add a task to the state
+  // Add a task to the "tasks" state
   const addTaskToState = task => {
     setTasks(tasks => [...tasks, task]);
   }
 
-  // Set the state that contains the task that will be shown on the "ViewTask", "EditTask" and 
-  // "DeleteTask" components
+  // Set the "task" state that contains the task that will be shown on the "ViewTask", "EditTask" and 
+  // "DeleteTask" components.
   const setTaskToWorkWith = task => {
     setTask(task);
   }
 
-  const editTaskOnState = updatedTask => {
+  // Update the "tasks" state with the task that was updated by the user.
+  const updateTaskOnState = updatedTask => {
     let tasksCopy = tasks.slice();
     let taskToUpdateIndex = tasksCopy.findIndex(task => task.id === updatedTask.id);
     tasksCopy[taskToUpdateIndex] = updatedTask;
     setTasks(tasksCopy);
   }
 
-  const removeTaskFromState = id => {
+  // Delete the task selected by the user from the "tasks" state
+  const deleteTaskFromState = id => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
   }
 
+  // Update the "tasks" state with the task that was updated by the user (changed its "completed" value)
   const changeCompleteStatus = id => {
     let tasksCopy = tasks.slice();
     let taskToUpdateIndex = tasksCopy.findIndex(task => task.id === id);
     let updatedTask = tasksCopy[taskToUpdateIndex];
     updatedTask.completed = updatedTask.completed ? 0 : 1;
     // Update "completed" field of the task in MySQL database by doing a PUT request to the API
-    TaskHttpServices.updateTask(updatedTask)
+    TaskHttpServices.updateTaskOnDb(updatedTask)
       .then(() => {
         // Update "completed" property of the task on the state.
         tasksCopy[taskToUpdateIndex] = updatedTask;
@@ -73,10 +76,10 @@ const App = () => {
             <ViewTask {...props} task={task} />
           )} />
           <Route path="/edit-task" render={props => (
-            <EditTask {...props} task={task} editTaskOnState={editTaskOnState} />
+            <EditTask {...props} task={task} updateTaskOnState={updateTaskOnState} />
           )} />
           <Route path="/delete-task" render={props => (
-            <DeleteTask {...props} task={task} removeTaskFromState={removeTaskFromState} />
+            <DeleteTask {...props} task={task} deleteTaskFromState={deleteTaskFromState} />
           )} />
           <Route path="/">
             <Tasks

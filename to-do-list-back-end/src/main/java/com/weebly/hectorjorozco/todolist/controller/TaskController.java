@@ -26,26 +26,26 @@ public class TaskController {
 	private TaskRepository taskRepository;
 
 	// Add task (CREATE)
-	@PostMapping("/addtask")
+	@PostMapping("/add-task")
 	public Task addTask(@RequestBody Task task) {
 		return taskRepository.save(task);
 	}
 
 	// Get all tasks (READ)
-	@GetMapping("/tasks")
+	@GetMapping("/get-tasks")
 	public List<Task> getTasks() {
 		return taskRepository.findAll();
 	}
 
 	// Update task (UPDATE)
-	@PutMapping("/task")
+	@PutMapping("/update-task")
 	public ResponseEntity<Task> updateTask(@RequestBody Task task) {
 		Task updatedTask = taskRepository.save(task);
 		return ResponseEntity.ok(updatedTask);
 	}
 
 	// Delete task (DELETE)
-	@DeleteMapping("/task/{id}")
+	@DeleteMapping("/delete-task/{id}")
 	public String deleteTask(@PathVariable long id) {
 		taskRepository.deleteById(id);
 		return "The task with id: " + id + " was removed from the database.";

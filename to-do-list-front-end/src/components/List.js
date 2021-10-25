@@ -6,6 +6,7 @@ import notCompleteIcon from '../images/notComplete.svg';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from 'react-router-dom'
 
+// Display a list of tasks
 const List = props => {
 
     const handleChangeCompleteStatus = (id) => {
@@ -13,7 +14,6 @@ const List = props => {
     }
 
     return (
-
         <ul className="List">
             {
                 props.tasks.map(

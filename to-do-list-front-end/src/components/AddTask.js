@@ -23,6 +23,8 @@ const AddTask = props => {
 
   const handleAddTask = e => {
     e.preventDefault();
+    // Create a task object with the values given by the user, a "completed" value of 0 and an "id" 
+    // value of the actual date (this ensures that every task created will have a unique id).
     let taskToAdd = {
       id: Date.now(),
       title: task.title,

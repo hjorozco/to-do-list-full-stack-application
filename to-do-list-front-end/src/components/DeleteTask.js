@@ -8,10 +8,10 @@ const DeleteTask = props => {
   const handleDeleteTask = e => {
     e.preventDefault();
     // Delete task on the MySQL database by doing a DELETE request to the API
-    TaskHttpServices.deleteTask(task.id)
+    TaskHttpServices.deleteTaskFromDb(task.id)
       .then(() => {
         // Delete task on the "tasks" state of the App component (Source of truth)
-        props.removeTaskFromState(task.id);
+        props.deleteTaskFromState(task.id);
         props.history.push("/");
       })
       .catch((e) => alert(`Your task was not deleted. ${e.message}.`));
@@ -45,7 +45,7 @@ const DeleteTask = props => {
             rows="3"
           />
           <div className="Bold FormInput">
-            {task.completed ? "This task is done." : "Not done. Are you sure?"}
+            {task.completed ? "Done. You can delete it safely." : "Not done. Are you sure you want to delete it?"}
           </div>
           <div className="FormButtonsContainer">
             <button className="Button SubmitButton" type="submit">DELETE</button>

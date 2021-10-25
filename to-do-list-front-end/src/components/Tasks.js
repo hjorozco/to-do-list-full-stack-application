@@ -3,6 +3,7 @@ import addTaskIcon from '../images/addTask.svg';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from 'react-router-dom'
 
+// The main screen of the TO DO LIST application.
 const Tasks = props => {
 
   return (
