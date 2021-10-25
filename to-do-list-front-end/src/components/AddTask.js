@@ -23,24 +23,25 @@ const AddTask = props => {
 
   const handleAddTask = e => {
     e.preventDefault();
-
     let taskToAdd = {
       id: Date.now(),
       title: task.title,
       details: task.details,
       completed: 0,
     }
-    
-    TaskHttpServices.addTask(taskToAdd).then(() => {
-      props.history.push('/tasks');
-    }).catch(() => {
-      alert("Your task was not saved. Please try again.");
-    });
+    // Add task object to the MySQL database by doing a POST request to the API
+    TaskHttpServices.addTaskToDb(taskToAdd)
+      .then(() => {
+        // Add task object to the state in the App component (Source of truth)
+        props.addTaskToState(taskToAdd);
+        props.history.push("/");
+      })
+      .catch((e) => alert(`Your task was not saved. ${e.message}.`));
   }
 
   const handleCancel = e => {
     e.preventDefault();
-    props.history.push("/tasks");
+    props.history.push("/");
   }
 
   return (

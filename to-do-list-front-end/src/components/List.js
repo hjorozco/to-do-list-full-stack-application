@@ -4,20 +4,9 @@ import deleteIcon from '../images/delete.svg';
 import completeIcon from '../images/complete.svg';
 import notCompleteIcon from '../images/notComplete.svg';
 import Tooltip from '@material-ui/core/Tooltip';
+import { Link } from 'react-router-dom'
 
 const List = props => {
-
-    const handleViewTask = (id) => {
-        props.showViewTaskForm(id);
-    }
-
-    const handleEditTask = (id) => {
-        props.showEditTaskForm(id);
-    }
-
-    const handleDeleteTask = (id) => {
-        props.showDeleteTaskForm(id);
-    }
 
     const handleChangeCompleteStatus = (id) => {
         props.changeCompleteStatus(id);
@@ -54,21 +43,27 @@ const List = props => {
                                     }
                                 </li>
                                 <div className="TaskButtonsContainer">
-                                    <Tooltip title='view' arrow>
-                                        <button className="TaskButton" onClick={() => handleViewTask(task.id)}>
-                                            <img width="20" height="20" alt="Delete from list" src={viewIcon} />
-                                        </button>
-                                    </Tooltip>
-                                    <Tooltip title='edit' arrow>
-                                        <button className="TaskButton" onClick={() => handleEditTask(task.id)}>
-                                            <img width="20" height="20" alt="Delete from list" src={editIcon} />
-                                        </button>
-                                    </Tooltip>
-                                    <Tooltip title='delete' arrow>
-                                        <button className="TaskButton" onClick={() => handleDeleteTask(task.id)}>
-                                            <img width="20" height="20" alt="Delete from list" src={deleteIcon} />
-                                        </button>
-                                    </Tooltip>
+                                    <Link to="/view-task">
+                                        <Tooltip title='view' arrow>
+                                            <button className="TaskButton" onClick={() => props.setTaskToWorkWith(task)}>
+                                                <img width="20" height="20" alt="View task" src={viewIcon} />
+                                            </button>
+                                        </Tooltip>
+                                    </Link>
+                                    <Link to="/edit-task">
+                                        <Tooltip title='edit' arrow>
+                                            <button className="TaskButton" onClick={() => props.setTaskToWorkWith(task)}>
+                                                <img width="20" height="20" alt="Edit task" src={editIcon} />
+                                            </button>
+                                        </Tooltip>
+                                    </Link>
+                                    <Link to="/delete-task">
+                                        <Tooltip title='delete' arrow>
+                                            <button className="TaskButton" onClick={() => props.setTaskToWorkWith(task)}>
+                                                <img width="20" height="20" alt="Delete task" src={deleteIcon} />
+                                            </button>
+                                        </Tooltip>
+                                    </Link>
                                 </div>
                             </div>;
                         if (props.filter === "completed" && task.completed)

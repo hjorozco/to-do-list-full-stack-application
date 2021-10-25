@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.weebly.hectorjorozco.todolist.exception.ResourceNotFoundException;
 import com.weebly.hectorjorozco.todolist.model.Task;
 import com.weebly.hectorjorozco.todolist.repository.TaskRepository;
 
@@ -38,28 +37,16 @@ public class TaskController {
 		return taskRepository.findAll();
 	}
 
-	// Get task (READ)
-	@GetMapping("/task/{id}")
-	public ResponseEntity<Task> getTask(@PathVariable long id) {
-		Task task = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
-		return ResponseEntity.ok(task);
-	}
-
 	// Update task (UPDATE)
-	@PutMapping("/task/{id}")
-	public ResponseEntity<Task> updateTask(@PathVariable long id, @RequestBody Task task) {
-		Task tempTask = taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
-		tempTask.setTitle(task.getTitle());
-		tempTask.setDetails(task.getDetails());
-		tempTask.setCompleted(task.getCompleted());
-		Task updatedTask = taskRepository.save(tempTask);
+	@PutMapping("/task")
+	public ResponseEntity<Task> updateTask(@RequestBody Task task) {
+		Task updatedTask = taskRepository.save(task);
 		return ResponseEntity.ok(updatedTask);
 	}
 
 	// Delete task (DELETE)
 	@DeleteMapping("/task/{id}")
 	public String deleteTask(@PathVariable long id) {
-		taskRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Task not found"));
 		taskRepository.deleteById(id);
 		return "The task with id: " + id + " was removed from the database.";
 	}

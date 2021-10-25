@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TaskHttpServices from '../services/TaskHttpServices';
 
 const EditTask = props => {
 
-  const [task, setTask] = useState({
-    id: 0,
-    title: '',
-    details: '',
-    completed: 0,
-  });
-
-  // When component mounts get tasks data from MySQL database
-  useEffect(() => {
-    TaskHttpServices.getTask(props.match.params.id).then(response => {
-      setTask(response.data);
-    })
-  }, [props.match.params.id]);
+  const [task, setTask] = useState(props.task);
 
   const handleInputChange = e => {
     setTask({ ...task, [e.target.id]: e.target.value.trimLeft() });
@@ -23,13 +11,20 @@ const EditTask = props => {
 
   const handleUpdateTask = e => {
     e.preventDefault();
-    TaskHttpServices.updateTask(task, task.id)
-      .then(() => props.history.push("/tasks"));
+
+    // Update task on the MySQL database by doing a PUT request to the API
+    TaskHttpServices.updateTask(task)
+      .then(() => {
+        // Update task on the "tasks" state of the App component (Source of truth)
+        props.editTaskOnState(task);
+        props.history.push("/");
+      })
+      .catch((e) => alert(`Your task was not updated. ${e.message}.`));
   }
 
   const handleCancel = e => {
     e.preventDefault();
-    props.history.push("/tasks");
+    props.history.push("/");
   }
 
   return (

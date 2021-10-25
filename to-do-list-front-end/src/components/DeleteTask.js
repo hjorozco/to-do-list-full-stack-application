@@ -1,31 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TaskHttpServices from '../services/TaskHttpServices';
 
 const DeleteTask = props => {
 
-  const [task, setTask] = useState({
-    id: 0,
-    title: '',
-    details: '',
-    completed: 0,
-  });
-
-  // When component mounts get tasks data from MySQL database
-  useEffect(() => {
-    TaskHttpServices.getTask(props.match.params.id).then(response => {
-      setTask(response.data);
-    })
-  }, [props.match.params.id]);
+  const [task] = useState(props.task);
 
   const handleDeleteTask = e => {
     e.preventDefault();
+    // Delete task on the MySQL database by doing a DELETE request to the API
     TaskHttpServices.deleteTask(task.id)
-      .then(() => props.history.push("/tasks"));
+      .then(() => {
+        // Delete task on the "tasks" state of the App component (Source of truth)
+        props.removeTaskFromState(task.id);
+        props.history.push("/");
+      })
+      .catch((e) => alert(`Your task was not deleted. ${e.message}.`));
   }
 
   const handleCancel = e => {
     e.preventDefault();
-    props.history.push("/tasks");
+    props.history.push("/");
   }
 
   return (
@@ -51,7 +45,7 @@ const DeleteTask = props => {
             rows="3"
           />
           <div className="Bold FormInput">
-            {task.completed ? "Done." : "Not done. Are you sure?"}
+            {task.completed ? "This task is done." : "Not done. Are you sure?"}
           </div>
           <div className="FormButtonsContainer">
             <button className="Button SubmitButton" type="submit">DELETE</button>

@@ -23,7 +23,7 @@
 }
 
 .Operation {
-  width: 40vw;
+  width: 45vw;
   height: fit-content;
 }
 
@@ -221,16 +221,37 @@ li {
 }
 
 .Footer {
-  margin-bottom: 10px;
+  margin: 10px 0px;
 }
 
 .Bold{
   font-weight: 600;
 }
 
+@media (max-width:1000px) {
+  .Tasks {
+    width: 85vw;
+  }
+  .Operation {
+    width: 60vw;
+  }
+}
+
 @media (max-width:800px) {
   .Tasks {
     width: 90vw;
+  }
+  .Operation {
+    width: 80vw;
+  }
+}
+
+@media (max-width:600px) {
+  .Tasks {
+    width: 92vw;
+  }
+  .Operation {
+    width: 95vw;
   }
 }
 
@@ -238,10 +259,16 @@ li {
   .Tasks {
     width: 70vw;
   }
+  .Operation {
+    width: 40vw;
+  }
 }
 
-@media (min-width:1600px) {
+@media (min-width:1400px) {
   .Tasks {
     width: 60vw;
+  }
+  .Operation {
+    width: 35vw;
   }
 }

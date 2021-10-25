@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react';
-import TaskHttpServices from '../services/TaskHttpServices';
+import { useState } from 'react';
 
 const ViewTask = props => {
 
-  const [task, setTask] = useState({
-    id: 0,
-    title: '',
-    details: '',
-    completed: 0,
-  });
-
-  // When component mounts get tasks data from MySQL database
-  useEffect(() => {
-    TaskHttpServices.getTask(props.match.params.id).then(response => {
-      setTask(response.data);
-    })
-  }, [props.match.params.id]);
+  const [task] = useState(props.task);
 
   const handleBack = e => {
     e.preventDefault();
-    props.history.push("/tasks");
+    props.history.push("/");
   }
 
   return (
