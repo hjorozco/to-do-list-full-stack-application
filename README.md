@@ -4,7 +4,9 @@
 The purpose of this project is to show the process of developing a *Full Stack Web Application* that uses the MVC architecture. It showcases a **TO DO LIST** web app where users can save, view, update and delete tasks that they need to do in the future. 
 ____
 * #### Front End ####
-**React JavaScript web application** that communicates with the Back End by performing all the CRUD operations (Create, Read, Update and Delete). This application serves as the *View* component in the MVC model. Go [here](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-front-end) to see a detailed description of it. 
+**React JavaScript web application** that communicates with the Back End by performing all the CRUD operations (Create, Read, Update and Delete). This application serves as the *View* component in the MVC model. 
+
+Go [here](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-front-end) to see a detailed description of the Front End. 
 
 * #### Back End ####
 The Back End consists of two parts: 
