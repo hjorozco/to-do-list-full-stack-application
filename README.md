@@ -6,7 +6,7 @@ ____
 * #### Front End ####
 **React JavaScript web application** that communicates with the Back End by performing all the CRUD operations (Create, Read, Update and Delete). This application serves as the *View* component in the MVC model. 
 
-Go [here](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-front-end) to see a detailed description of the Front End. 
+[**Front End** details.](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-front-end) 
 
 * #### Back End ####
 The Back End consists of two parts: 
@@ -15,7 +15,7 @@ The Back End consists of two parts:
 
 2. ***MySQL database*** that servers as the *Model* component of the MVC architecture by providing a dynamic data structure, independent of the user interface.
 
-Go [here](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-back-end) to see a detailed description of the Back End.
+[**Back End** details.](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-back-end)
 
 ___
 This is the capstone project of the *Software Engineer* program from [Per Scholas](https://perscholas.org/courses/software-engineer/software-engineer-dallas/).
