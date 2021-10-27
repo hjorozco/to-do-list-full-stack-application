@@ -13,7 +13,7 @@ The Back End consists of two parts:
 
 1. **Java Spring based application** that servers as the *Controller* component of the MVC model by accepting HTTP requests from the *View* component and converting them to commands for the *Model*, then sending data back to the *View* for it to display.
 
-2. ***MySQL database*** that servers as the *Model* component of the MVC architecture by providing a dynamic data structure, independent of the user interface.
+2. **MySQL database** that servers as the *Model* component of the MVC architecture by providing a dynamic data structure, independent of the user interface.
 
 [**Back End** details.](https://github.com/hjorozco/to-do-list-full-stack-application/tree/main/to-do-list-back-end)
 
