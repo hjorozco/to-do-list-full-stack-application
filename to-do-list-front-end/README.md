@@ -1,7 +1,7 @@
 ## TO DO LIST Front End
 #### React JavaScript app
 
-The application is made up of the following React components:
+The application is hosted on a development server when running locally on port 3000 (http://localhost:3000) and is made up of the following React components:
 
 * **App** 
 
@@ -15,7 +15,7 @@ It shows the *To Do List* and buttons to let the user perform the *Add*, *View*,
 
 The *Tasks* component displays the data that is contained on the *App* state. It contains a *ListContainer* component wich contains a *ListHeader* component in the top (shows the filter option that lets user filter the tasks shown), and *List* component at the bottom (shows the actual list of tasks with some action buttons for each task).
 
-![*Tasks* component](./tasks.png "Tasks component")
+![Tasks component](./tasks.png "Tasks component")
 
 * **AddTask** 
 
@@ -23,7 +23,7 @@ This component is shown when the user clicks on the *Red Plus Icon* located at t
 
 After entering the task information, when the user clicks the *ADD* button of this component a POST request is sent to the API asking the Spring application to save the task data on the MySQL database. If it succeds, then the task is also added to the state on the *App* component.
 
-![*Tasks* component](./addtask.png "Tasks component")
+![AddTask component](./addtask.png "AddTask component")
 
 * **ViewTask** 
 
@@ -31,7 +31,7 @@ This component is shown when the user clicks on the *Magnifying glass icon* at t
 
 The source of the information that it displays is the *App* component state which saves the information of the task from which the icon was clicked.
 
-![*Tasks* component](./viewtask.png "Tasks component")
+![ViewTask component](./viewtask.png "ViewTask component")
 
 * **EditTask** 
 
@@ -41,7 +41,7 @@ The source of the information that it displays is the *App* component state whic
 
 After editing any of the fields, when the user clicks the *UPDATE* button of this component a PUT request is sent to the API asking the Spring application to update the task data on the MySQL database. If it succeds, then the task is also updated on the state on the *App* component.
 
-![*Tasks* component](./edittask.png "Tasks component")
+![EditTask component](./edittask.png "EditTask component")
 
 * **DeleteTask** 
 
@@ -51,7 +51,7 @@ The source of the information that it displays is the *App* component state whic
 
 When the user clicks the *DELETE* button of this component a DELETE request is sent to the API asking the Spring application to delete the task data on the MySQL database. If it succeds, then the task is also deleted on the state on the *App* component.
 
-![*Tasks* component](./deletetask.png "Tasks component")
+![DeleteTask component](./deletetask.png "DeleteTask component")
 
 
 Finally, the **TaskHttpServices** class contains the *Axios* HTTP request methods used by this React JS application to request and send data to the BackEnd.
