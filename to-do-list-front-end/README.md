@@ -53,6 +53,9 @@ When the user clicks the *DELETE* button of this component a DELETE request is s
 
 ![*Tasks* component](./deletetask.png "Tasks component")
 
+
+Finally, the **TaskHttpServices** class contains the *Axios* HTTP request methods used by this React JS application to request and send data to the BackEnd.
+
 ___
 
 **Installation instructions:**

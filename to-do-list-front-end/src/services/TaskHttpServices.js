@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// API End Point location (Apache Tomcat server) 
+// API End Point location (Spring Application Apache Tomcat server) 
 const TASKS_API_BASE_URL = "http://localhost:8081/api";
 
 class TaskHttpServices {
